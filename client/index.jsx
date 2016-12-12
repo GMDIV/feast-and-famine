@@ -1,3 +1,4 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-
-ReactDOM.render( <App />, getDocumentById("app"));
+ReactDOM.render( <h1>I am rendering from react</h1>, document.getElementById("app"));
