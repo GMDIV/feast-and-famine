@@ -1,0 +1,11 @@
+{
+  "name": "feast-and-famine",
+  "version": "1.0.0",
+  "description": "A card game app where the person who still has cards in their deck wins. Using react, MongoDB, and socket.io.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "GMDIV",
+  "license": "ISC"
+}
