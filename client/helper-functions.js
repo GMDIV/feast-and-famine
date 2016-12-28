@@ -30,3 +30,40 @@ function topDeckRemove(amount, deck){
 	}
 	return removedCards
 }
+
+
+//traditional card game new deck creation
+function createDeck() {  
+  var suits = new Array("H", "C", "S", "D"); //if this was a traditional card game, we would have these 4 suits
+  var deck = new Array(); //the array where the new deck will be stored.
+  var deckMax = 52; //the total amount of cards in a starter deck
+  var index = deckMax / suits.length; //the index is the amount of cards (on average, or in this
+  // case, the actual amount in each set (hearts, spades..))
+
+  var count = 0; //We create a counter to navigate our position in a set
+  for(i = 0; i <= 3; i++) //we iterate through the number of the suits
+      for(j = 1; j <= index; j++)//we now iterate through the position within each of thos suits
+          deck[count++] = j + suits[i]; //we now add the the deck the card number (j) tied to 
+      //the current suit letter(H or C) like "4S" or "13D"
+
+  return deck; //return the deck
+}
+
+//shuffling of the deck.
+function shufflePack(deck) {  //take a particular player's deck
+  var i = deck.length;
+  var j;
+  var tempi;
+  var tempj;
+  if (i === 0) return false; //if there are no cards in the deck, there isn't anything to shuffle. Return false
+  while (i > 0) { //while i is greater than 0. Remember that i is just the length of the deck at the start of the function.
+     j = Math.floor(Math.random() * (i + 1)); //j will be a randomized whole number multipled by the amount of cards in the deck
+     // +1 so that it can cover the last number (due to indexing since i is just the length)
+     tempi = deck[i]; //tempi is the position in the deck at the second to last position
+     tempj = deck[j]; //tempj is a randomized position in the deck
+     deck[i] = tempj; //we now point the second to last position to equal the given randomized card
+     deck[j] = tempi; //we now point the randomized position to equal the second to last card.
+     i--; //we reduce i (originally just a number that equaled the length of the deck) and continue this till i is 0
+   }
+  return pack; //return the shuffled pack.
+}
