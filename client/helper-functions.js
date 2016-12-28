@@ -67,3 +67,22 @@ function shufflePack(deck) {  //take a particular player's deck
    }
   return pack; //return the shuffled pack.
 }
+
+function draw(deck, amount, hand, initial) {  
+  var cards = new Array(); //The cards that are going to be drawn
+  cards = deck.slice(0, amount); //slice from the top of the deck the amount of cards you need to draw
+
+  deck.splice(0, amount); //then splice out those cards from the deck since they have been drawn
+
+  if (!initial) { //if not the first turn
+    hand.push.apply(hand, cards); //go ahead and merge the cards in the designated hand with 
+    //the sliced/drawn cards. (could have otherwise concatted )
+  }
+
+  return cards; //return the cards that are drawn
+}
+
+function playCard(amount, hand, index) { 
+  hand.splice(index, amount) //remove the card(s) from your hand that you just played
+  return hand; //then return the hand
+}
