@@ -1,39 +1,41 @@
-
+module.exports = {
 //handSize will be this.state.handSize = [array]
 //hand refers to a specific player's hand.
 //deck refers to a specific player's deck.
 //discardPile refers to a specific player's discard pile
-function targetDiscard(amount, hand) {
-	var removedCards = []
-	for(var i = 0; i < amount+1; i++){
-		var selectedCard = randomCardindex(hand);
-		removedCards.push(hand.splice(selectedCard, 1));
-	}
-	return removedCards	
-}
 
-function randomCardIndex(targetHand){
-	var randomIndex = Math.floor(Math.random() * targetHand.length);
-	return randomIndex;
-}
 
-function targetDraw(amount, deck, hand){
-	var drawnCards = topDeckRemove(amount,deck);
-	var revisedHand = hand.concat(drawnCards);
-	return revisedHand
-}
+// function targetDiscard(amount, hand) {
+// 	var removedCards = []
+// 	for(var i = 0; i < amount+1; i++){
+// 		var selectedCard = randomCardindex(hand);
+// 		removedCards.push(hand.splice(selectedCard, 1));
+// 	}
+// 	return removedCards	
+// }
 
-function topDeckRemove(amount, deck){
-	var removedCards = [];
-	for(var i = 0; i < amount+1; i++){
-		removedCards.push(deck.unshift())
-	}
-	return removedCards
-}
+// function randomCardIndex(targetHand){
+// 	var randomIndex = Math.floor(Math.random() * targetHand.length);
+// 	return randomIndex;
+// }
+
+// function targetDraw(amount, deck, hand){
+// 	var drawnCards = topDeckRemove(amount,deck);
+// 	var revisedHand = hand.concat(drawnCards);
+// 	return revisedHand
+// }
+
+// function topDeckRemove(amount, deck){
+// 	var removedCards = [];
+// 	for(var i = 0; i < amount+1; i++){
+// 		removedCards.push(deck.unshift())
+// 	}
+// 	return removedCards
+// }
 
 
 //traditional card game new deck creation
-function createDeck() {  
+createDeck: function() {  
   var suits = new Array("H", "C", "S", "D"); //if this was a traditional card game, we would have these 4 suits
   var deck = new Array(); //the array where the new deck will be stored.
   var deckMax = 52; //the total amount of cards in a starter deck
@@ -47,10 +49,10 @@ function createDeck() {
       //the current suit letter(H or C) like "4S" or "13D"
 
   return deck; //return the deck
-}
+},
 
 //shuffling of the deck.
-function shufflePack(deck) {  //take a particular player's deck
+ shuffleDeck: function(deck) {  //take a particular player's deck
   var i = deck.length;
   var j;
   var tempi;
@@ -65,10 +67,10 @@ function shufflePack(deck) {  //take a particular player's deck
      deck[j] = tempi; //we now point the randomized position to equal the second to last card.
      i--; //we reduce i (originally just a number that equaled the length of the deck) and continue this till i is 0
    }
-  return pack; //return the shuffled pack.
-}
+  return deck; //return the shuffled pack.
+},
 
-function draw(deck, amount, hand, initial) {  
+ draw: function(deck, amount, hand, initial) {  
   var cards = new Array(); //The cards that are going to be drawn
   cards = deck.slice(0, amount); //slice from the top of the deck the amount of cards you need to draw
 
@@ -80,9 +82,12 @@ function draw(deck, amount, hand, initial) {
   }
 
   return cards; //return the cards that are drawn
-}
+},
 
-function playCard(amount, hand, index) { 
+ playCard: function(amount, hand, index) { 
   hand.splice(index, amount) //remove the card(s) from your hand that you just played
   return hand; //then return the hand
 }
+
+
+};

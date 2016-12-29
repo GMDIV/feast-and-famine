@@ -3,8 +3,14 @@ var app = express();
 var bodyParser = require('body-parser');
 var browserify = require('browserify-middleware');
 var path = require('path');
- 
+var io = require('socket.io');
 
+var game = require('../client/helper-functions.js');
+
+
+var players = {};
+var start = false;
+var deck = game.shuffleDeck(game.createDeck());
 
 
 app.use(express.static(path.join(__dirname, '/../client/')))
